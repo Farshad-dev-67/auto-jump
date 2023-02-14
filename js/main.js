@@ -8,7 +8,7 @@ class autoJump{
                 event.preventDefault();
             }
         }
-       })
+       });
        document.addEventListener('keyup', event => {
         if (event.target.tagName === 'INPUT') {
             const value = event.target.value;
@@ -20,7 +20,20 @@ class autoJump{
                 }
             }
         }
+       });
+       document.addEventListener('keydown', event => {
+        if (event.target.tagName === 'INPUT' && event.key === 'Backspace') {
+            const value = event.target.value;
+            if (value === '') {
+                const currentOrderId = +event.target.getAttribute('data-order');
+                const nextElement = container.querySelector(`input[data-order='${currentOrderId - 1}']`);
+                if (nextElement !== null) {
+                    nextElement.focus();
+                } 
+            }
+        }
        })
+
     }
 }
 new autoJump('.container', {inputLength: 4});
