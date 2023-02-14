@@ -1,7 +1,6 @@
 class autoJump{
     constructor(el, config) {
        const container = document.querySelector(el);
-
        document.addEventListener('keypress', event => {
         if (event.target.tagName === 'INPUT') {
             const value = event.target.value;
@@ -10,7 +9,6 @@ class autoJump{
             }
         }
        })
-
        document.addEventListener('keyup', event => {
         if (event.target.tagName === 'INPUT') {
             const value = event.target.value;
